@@ -22,7 +22,7 @@ task.defer(function()
     repeat task.wait() until _G.uncResult ~= nil
     Rayfield:Notify({
         Title = "UNC Test Result",
-        Content = _G.uncResult,  -- UNC test kodunuzun belirlediği sonuç mesajı
+        Content = _G.uncResult, 
         Duration = 5,
         Image = 133212968396061,
     })
