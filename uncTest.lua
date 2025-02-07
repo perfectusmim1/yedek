@@ -869,27 +869,4 @@
             end
             ws:Close()
         end)
-
-        task.defer(function()
-            -- Tüm testler tamamlanana kadar bekle
-            repeat task.wait() until running == 0
-        
-            -- UNC başarı oranını hesapla
-            local rate = math.round(passes / (passes + fails) * 100)
-            local outOf = passes .. " out of " .. (passes + fails)
-        
-            print("\n")
-            print("UNC Summary")
-            print("✅ Tested with a " .. rate .. "% success rate (" .. outOf .. ")")
-            print("⛔ " .. fails .. " tests failed")
-            print("⚠️ " .. undefined .. " globals are missing aliases")
-        
-            -- Rayfield bildirimini göster
-            Rayfield:Notify({
-                Title = "UNC Test Result",
-                Content = "Tested with a " .. rate .. "% success rate (" .. outOf .. ").",
-                Duration = 5,
-                Image = 133212968396061,
-            })
-        end)
         
