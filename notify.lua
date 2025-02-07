@@ -1,5 +1,4 @@
 
-local Rayfield = Rayfield or loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/script/refs/heads/main/editedui", true))()
 
 local success, errorMessage = pcall(function()
     local unctestCode = loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/yedek/refs/heads/main/uncTest.lua", true))
