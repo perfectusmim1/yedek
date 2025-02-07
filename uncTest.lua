@@ -870,4 +870,10 @@
             ws:Close()
         end)
         
+-- Testler tamamlandıktan sonra:
+local rate = math.round(passes / (passes + fails) * 100)
+local outOf = passes .. " out of " .. (passes + fails)
+
+-- Global değişken ataması:
 _G.uncResult = "Tested with a " .. rate .. "% success rate (" .. outOf .. ")"
+
