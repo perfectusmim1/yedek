@@ -1,24 +1,29 @@
-
--- UNC test kodunu doğru URL'den çekip çalıştıran ve hata alındığında Rayfield bildirimi gönderen fonksiyon:
-local function runUNCAndNotify()
-    local success, errorMessage = pcall(function()
-        local unctestCode = loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/yedek/refs/heads/main/uncTest.lua", true))
-        if unctestCode then
-            unctestCode()  -- UNC test kodunu çalıştırıyoruz
-        else
-            error("UNC test kodu yüklenemedi.")
-        end
-    end)
-
-    if not success then
-        Rayfield:Notify({
-            Title = "UNC Test Error",
-            Content = "UNC test kodu yüklenirken hata oluştu: " .. errorMessage,
-            Duration = 5,
-            Image = 133212968396061,
-        })
+local success, errorMessage = pcall(function()
+    local unctestCode = loadstring(game:HttpGet("https://raw.githubusercontent.com/perfectusmim1/yedek/refs/heads/main/uncTest.lua", true))
+    if unctestCode then
+        unctestCode()
+    else
+        error("UNC test kodu yüklenemedi.")
     end
+end)
+
+if not success then
+    Rayfield:Notify({
+        Title = "UNC Test Error",
+        Content = "UNC test kodu yüklenirken hata oluştu: " .. errorMessage,
+        Duration = 5,
+        Image = 133212968396061,
+    })
+    return
 end
 
--- Buton callback'inde bu fonksiyonu çağırın:
-runUNCAndNotify()
+
+task.defer(function()
+    repeat task.wait() until _G.uncResult ~= nil
+    Rayfield:Notify({
+        Title = "UNC Test Result",
+        Content = _G.uncResult,  -- UNC test kodunuzun belirlediği sonuç mesajı
+        Duration = 5,
+        Image = 133212968396061,
+    })
+end)
