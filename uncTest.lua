@@ -870,3 +870,4 @@
             ws:Close()
         end)
         
+_G.uncResult = "Tested with a " .. rate .. "% success rate (" .. outOf .. ")"
